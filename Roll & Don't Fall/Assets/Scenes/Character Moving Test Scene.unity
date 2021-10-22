@@ -427,6 +427,7 @@ GameObject:
   - component: {fileID: 566682485}
   - component: {fileID: 566682484}
   - component: {fileID: 566682483}
+  - component: {fileID: 566682486}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -499,6 +500,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
+--- !u!114 &566682486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566682482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56666c5a40171f54783dd416a44f42bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1 &663221773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,6 +1174,8 @@ GameObject:
   - component: {fileID: 1496029873}
   - component: {fileID: 1496029875}
   - component: {fileID: 1496029874}
+  - component: {fileID: 1496029877}
+  - component: {fileID: 1496029876}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -1220,6 +1239,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496029872}
   m_CullTransparentMesh: 0
+--- !u!114 &1496029876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496029872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0b344663c39bf74a87d6f10fa40d58a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dragBeginning:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!58 &1496029877
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496029872}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 75
 --- !u!1 &1604993883
 GameObject:
   m_ObjectHideFlags: 0
