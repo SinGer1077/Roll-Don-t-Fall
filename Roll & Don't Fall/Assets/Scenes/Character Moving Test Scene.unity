@@ -1254,6 +1254,12 @@ MonoBehaviour:
   _dragBeginning:
     m_PersistentCalls:
       m_Calls: []
+  _dragging:
+    m_PersistentCalls:
+      m_Calls: []
+  _dragEnding:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!58 &1496029877
 CircleCollider2D:
   m_ObjectHideFlags: 0
