@@ -1,18 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PhysicalBasedMover : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private Rigidbody _body;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField]
+    private float _acceleration;
+
+    private float x_speed;
+
+    private float y_speed;
+
+    private float z_speed;
+
+    public void MoveBody()
     {
-        
+
     }
 }

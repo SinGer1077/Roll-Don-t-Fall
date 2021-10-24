@@ -1177,6 +1177,7 @@ GameObject:
   - component: {fileID: 1496029877}
   - component: {fileID: 1496029876}
   - component: {fileID: 1496029878}
+  - component: {fileID: 1496029879}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -1252,23 +1253,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b344663c39bf74a87d6f10fa40d58a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mover: {fileID: 1496029879}
   _dragBeginning:
     m_PersistentCalls:
       m_Calls: []
   _dragging:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1496029878}
-        m_MethodName: CheckEllipseInside
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _dragEnding:
     m_PersistentCalls:
       m_Calls: []
@@ -1302,6 +1293,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _smallEllipse: {fileID: 1496029873}
   _bigEllipse: {fileID: 1425269182}
+--- !u!114 &1496029879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496029872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04988114f0bb6364dbf66f1b057f7a07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _draggedRect: {fileID: 1496029873}
+  _checker: {fileID: 1496029878}
 --- !u!1 &1604993883
 GameObject:
   m_ObjectHideFlags: 0
