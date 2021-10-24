@@ -11,15 +11,22 @@ public class ControllerMover : MonoBehaviour
     [SerializeField]
     private PhysicalBasedMover _characterMover;
 
-    [SerializeField]
-    private Rigidbody _characterRigidBody;    
+    private Vector2 _lastPosition;
+
+    public void SetLastPosition()
+    {
+        _lastPosition = _draggedRect.position;
+    }
 
     public void Move(Vector2 eventDataPosition)
-    {
-        Debug.Log(eventDataPosition);
+    {        
         if (_checker.CheckEllipseInside(eventDataPosition))
         {
+            SetLastPosition();
             _draggedRect.position = eventDataPosition;
+
+            Vector2 difference = eventDataPosition - _lastPosition;
+            _characterMover.MoveBody(difference);
         }
     }
 }

@@ -14,8 +14,10 @@ public class PhysicalBasedMover : MonoBehaviour
 
     private float z_speed;
 
-    public void MoveBody()
+    public void MoveBody(Vector2 moveDirection)
     {
-
+        x_speed += moveDirection.x;
+        z_speed += moveDirection.y;
+        _body.velocity = new Vector3(x_speed * _acceleration, _body.velocity.y, z_speed * _acceleration);
     }
 }

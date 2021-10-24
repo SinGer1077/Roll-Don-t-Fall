@@ -18,6 +18,7 @@ public class Dragger : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        _mover.SetLastPosition();
         _dragBeginning?.Invoke();
     }    
 
