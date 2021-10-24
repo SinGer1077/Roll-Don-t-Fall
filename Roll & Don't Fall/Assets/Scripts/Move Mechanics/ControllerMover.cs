@@ -3,7 +3,10 @@
 public class ControllerMover : MonoBehaviour
 {
     [SerializeField]
-    private RectTransform _draggedRect;    
+    private RectTransform _draggedRect;
+
+    [SerializeField]
+    private RectTransform _parentRect;
 
     [SerializeField]
     private EllipseInsideEllipseChecker _checker;
@@ -26,7 +29,8 @@ public class ControllerMover : MonoBehaviour
             _draggedRect.position = eventDataPosition;
 
             Vector2 difference = eventDataPosition - _lastPosition;
-            _characterMover.MoveBody(difference);
+            float distance = Vector2.Distance(_parentRect.position, _draggedRect.position);
+            _characterMover.MoveBody(difference, distance);
         }
     }
 }
