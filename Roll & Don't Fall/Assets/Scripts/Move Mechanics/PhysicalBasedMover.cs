@@ -5,8 +5,7 @@ public class PhysicalBasedMover : MonoBehaviour
     [SerializeField]
     private Rigidbody _body;
 
-    [SerializeField]
-    private float _acceleration_coef;
+    private float _direction_coef = 0.02f;
 
     private float x_speed;
 
@@ -14,13 +13,13 @@ public class PhysicalBasedMover : MonoBehaviour
 
     private float z_speed;
 
-    public void MoveBody(Vector2 moveDirection, float power)
-    {
-        x_speed += moveDirection.x;
-        z_speed += moveDirection.y;
-
-        float acceleration = power * _acceleration_coef;
-        _body.velocity = new Vector3(x_speed * acceleration, _body.velocity.y, z_speed * acceleration);
+    public void MoveBody(Vector2 moveDirection)
+    {    
+        x_speed += moveDirection.x * _direction_coef;
+        z_speed += moveDirection.y * _direction_coef;
+        
+        _body.velocity = new Vector3(x_speed, _body.velocity.y, z_speed);
         Debug.Log(_body.velocity);
     }
+    
 }

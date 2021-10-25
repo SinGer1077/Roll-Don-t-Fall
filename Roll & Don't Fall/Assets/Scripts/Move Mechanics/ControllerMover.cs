@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+
+using UnityEngine;
 
 public class ControllerMover : MonoBehaviour
 {
@@ -12,7 +14,7 @@ public class ControllerMover : MonoBehaviour
     private EllipseInsideEllipseChecker _checker;
 
     [SerializeField]
-    private PhysicalBasedMover _characterMover;
+    private PhysicalBasedMover _characterMover;    
 
     private Vector2 _lastPosition;
 
@@ -22,15 +24,14 @@ public class ControllerMover : MonoBehaviour
     }
 
     public void Move(Vector2 eventDataPosition)
-    {        
+    {
         if (_checker.CheckEllipseInside(eventDataPosition))
         {
             SetLastPosition();
             _draggedRect.position = eventDataPosition;
 
-            Vector2 difference = eventDataPosition - _lastPosition;
-            float distance = Vector2.Distance(_parentRect.position, _draggedRect.position);
-            _characterMover.MoveBody(difference, distance);
+            Vector2 difference = eventDataPosition - _lastPosition;            
+            _characterMover.MoveBody(difference);
         }
     }
 }
