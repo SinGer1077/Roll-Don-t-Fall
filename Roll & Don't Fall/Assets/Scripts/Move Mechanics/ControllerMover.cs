@@ -25,13 +25,13 @@ public class ControllerMover : MonoBehaviour
 
     public void Move(Vector2 eventDataPosition)
     {
-        if (_checker.CheckEllipseInside(eventDataPosition))
-        {
+        //if (_checker.CheckEllipseInside(eventDataPosition))
+        //{
             SetLastPosition();
             _draggedRect.position = eventDataPosition;
 
             Vector2 difference = eventDataPosition - _lastPosition;            
             _characterMover.MoveBody(difference);
-        }
+        //}
     }
 }
