@@ -31,7 +31,7 @@ public class ControllerMover : MonoBehaviour
             _draggedRect.position = eventDataPosition;
 
             Vector2 difference = eventDataPosition - _lastPosition;            
-            _characterMover.MoveBody(difference);
+            //_characterMover.MoveBody(difference);
         //}
     }
 }
