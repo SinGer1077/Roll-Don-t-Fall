@@ -321,6 +321,7 @@ GameObject:
   - component: {fileID: 559683923}
   - component: {fileID: 559683924}
   - component: {fileID: 559683926}
+  - component: {fileID: 559683925}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -431,6 +432,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInput: {fileID: 559683926}
+  _body: {fileID: 559683923}
+  _stopper: {fileID: 559683925}
+--- !u!114 &559683925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559683918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 597ff172da3f5fa4dab936df5ce8cca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _body: {fileID: 559683923}
 --- !u!114 &559683926
 MonoBehaviour:
@@ -1316,12 +1331,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 2
+  - eventID: 13
     callback:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 559683924}
-          m_MethodName: SetPosition
+          m_MethodName: StartMoveBody
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 14
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 559683924}
+          m_MethodName: EndMoveBody
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

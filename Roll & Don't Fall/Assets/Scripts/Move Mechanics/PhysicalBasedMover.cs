@@ -10,7 +10,10 @@ public class PhysicalBasedMover : MonoBehaviour
     [SerializeField]
     private Rigidbody _body;
 
-    private bool _isMoving = false;
+    [SerializeField]
+    private SmoothStop _stopper;
+
+    private bool _isMoving = false;   
 
     private float _direction_coef = 0.01f;
 
@@ -20,19 +23,16 @@ public class PhysicalBasedMover : MonoBehaviour
 
     private float y_speed;
 
-    private float z_speed;
+    private float z_speed;   
 
     public void StartMoveBody(BaseEventData eventData)
     {
-        _isMoving = true;
-        Debug.Log("Begin Drag");
+        _isMoving = true;        
     }
 
     public void EndMoveBody(BaseEventData eventData)
     {
-        _isMoving = false;
-        SmoothStopBody();
-        Debug.Log("End Drag");
+        _isMoving = false;           
     }
 
     private void Update()
@@ -42,6 +42,10 @@ public class PhysicalBasedMover : MonoBehaviour
             _moveDirection = _playerInput.actions["Move"].ReadValue<Vector2>();
             MoveBody();
         }
+        else
+        {
+            _stopper.SmoothStopping();
+        }
     }
 
     private void MoveBody()
@@ -49,15 +53,8 @@ public class PhysicalBasedMover : MonoBehaviour
         x_speed += _moveDirection.x * _direction_coef;
         z_speed += _moveDirection.y * _direction_coef;
         
-        _body.velocity = new Vector3(x_speed, _body.velocity.y, z_speed);
-        Debug.Log(_body.velocity);
-    }
-
-    private void SmoothStopBody()
-    {
-        _body.velocity = Vector3.Lerp(new Vector3(0, _body.velocity.y, 0), _body.velocity, 0);
-    }
-
-
-    
+        _body.velocity = new Vector3(_body.velocity.x + _moveDirection.x * _direction_coef,
+            _body.velocity.y,
+            _body.velocity.z + _moveDirection.y * _direction_coef);       
+    }    
 }
