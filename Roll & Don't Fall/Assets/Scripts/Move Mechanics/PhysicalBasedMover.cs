@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
@@ -9,9 +11,11 @@ public class PhysicalBasedMover : MonoBehaviour
 
     [SerializeField]
     private Rigidbody _body;
-
+    
     [SerializeField]
-    private SmoothStop _stopper;
+    private GameObject _objectWithForces;
+
+    private Dictionary<IForce, bool> _forces;
 
     private bool _isMoving = false;   
 
@@ -21,14 +25,14 @@ public class PhysicalBasedMover : MonoBehaviour
 
     private float _maxSpeed = 10f;
 
-    public void StartMoveBody(BaseEventData eventData)
+    private void Awake()
     {
-        _isMoving = true;        
-    }
-
-    public void EndMoveBody(BaseEventData eventData)
-    {
-        _isMoving = false;           
+        _forces = new Dictionary<IForce, bool>();
+        var forcesComponents = _objectWithForces.GetComponents<IForce>();
+        foreach (var component in forcesComponents)
+        {
+            _forces.Add(component, true);
+        }
     }
 
     private void Update()
@@ -38,10 +42,23 @@ public class PhysicalBasedMover : MonoBehaviour
             _moveDirection = _playerInput.actions["Move"].ReadValue<Vector2>();
             MoveBody();
         }
-        else
+        
+        foreach (var force in _forces)
         {
-            _stopper.SmoothStopping();
+            if (force.Value == true)
+                force.Key.DoForce();
         }
+        
+    }
+
+    public void StartMoveBody(BaseEventData eventData)
+    {
+        _isMoving = true;
+    }
+
+    public void EndMoveBody(BaseEventData eventData)
+    {
+        _isMoving = false;
     }
 
     private void MoveBody()
@@ -56,7 +73,5 @@ public class PhysicalBasedMover : MonoBehaviour
         _body.velocity = new Vector3(xSpeed,
             _body.velocity.y,
             zSpeed);
-
-        Debug.Log(_body.velocity);
-    }    
+    }        
 }

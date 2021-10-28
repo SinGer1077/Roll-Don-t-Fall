@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SmoothStop : MonoBehaviour
+public class SmoothStop : MonoBehaviour, IForce
 {
     [SerializeField]
     private Rigidbody _body;
@@ -18,7 +18,7 @@ public class SmoothStop : MonoBehaviour
         _startMarker = new Vector3(0, _body.velocity.y, 0);        
     }
 
-    public void SmoothStopping()
+    public void DoForce()
     {
         _speed = Mathf.Max(Mathf.Abs(_body.velocity.x), Mathf.Abs(_body.velocity.z));
         _body.velocity = Vector3.SmoothDamp(_body.velocity, _startMarker, ref _velocity, _speed);

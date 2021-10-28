@@ -5,9 +5,6 @@ using UnityEngine.EventSystems;
 public class Dragger : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField]
-    private ControllerMover _mover;
-
-    [SerializeField]
     private UnityEvent _dragBeginning;
 
     [SerializeField]
@@ -17,14 +14,12 @@ public class Dragger : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
     private UnityEvent _dragEnding;
 
     public void OnBeginDrag(PointerEventData eventData)
-    {
-        _mover.SetLastPosition();
+    {        
         _dragBeginning?.Invoke();
     }    
 
     public void OnDrag(PointerEventData eventData)
-    {
-        _mover.Move(eventData.position);
+    {        
         _dragging?.Invoke();
     }
 
