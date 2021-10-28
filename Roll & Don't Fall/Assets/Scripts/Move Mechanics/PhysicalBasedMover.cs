@@ -15,15 +15,11 @@ public class PhysicalBasedMover : MonoBehaviour
 
     private bool _isMoving = false;   
 
-    private float _direction_coef = 0.01f;
+    private float _direction_coef = 0.05f;
 
     private Vector2 _moveDirection;
 
-    private float x_speed;
-
-    private float y_speed;
-
-    private float z_speed;   
+    private float _maxSpeed = 10f;
 
     public void StartMoveBody(BaseEventData eventData)
     {
@@ -49,12 +45,18 @@ public class PhysicalBasedMover : MonoBehaviour
     }
 
     private void MoveBody()
-    {    
-        x_speed += _moveDirection.x * _direction_coef;
-        z_speed += _moveDirection.y * _direction_coef;
+    {
+        float xSpeed = _body.velocity.x + _moveDirection.x * _direction_coef;
+        float zSpeed = _body.velocity.z + _moveDirection.y * _direction_coef;
+        if (Mathf.Abs(xSpeed) > _maxSpeed || Mathf.Abs(zSpeed) > _maxSpeed)
+        {
+            return;
+        }
         
-        _body.velocity = new Vector3(_body.velocity.x + _moveDirection.x * _direction_coef,
+        _body.velocity = new Vector3(xSpeed,
             _body.velocity.y,
-            _body.velocity.z + _moveDirection.y * _direction_coef);       
+            zSpeed);
+
+        Debug.Log(_body.velocity);
     }    
 }
