@@ -20,19 +20,24 @@ public class BezierTest : MonoBehaviour
     [SerializeField, Range(0, 1)]
     private float time;
 
+    [SerializeField]
+    private GameObject _goMesh;
+
     private Mesh _mesh;
 
     private void Start()
     {
         CreateMesh();
-
-        GameObject gameObject = new GameObject("Mesh", typeof(MeshFilter), typeof(MeshRenderer));
-        gameObject.GetComponent<MeshFilter>().mesh = _mesh;
+                
+        _goMesh.GetComponent<MeshFilter>().mesh = _mesh;
     }
 
     private void OnDrawGizmos()
     {
-        
+        for (int i = 0; i < _mesh.vertices.Length; i++)
+        {           
+            Gizmos.DrawSphere(_mesh.vertices[i], 0.1f);
+        }
     }
 
     private void Update()
@@ -68,19 +73,24 @@ public class BezierTest : MonoBehaviour
             secondPrevPoint = secondPoint;               
         }      
         
-        for (int i = 0; i < vertices.Count - 2; i++)
+        for (int i = 0; i < sigmentNumber * 2 - 2; i += 2)
         {
-            triangles.Add(i);
+            triangles.Add(i);            
             triangles.Add(i + 1);
             triangles.Add(i + 2);
+
+            triangles.Add(i + 3);
+            triangles.Add(i + 2);
+            triangles.Add(i + 1);
         }
 
         _mesh.vertices = vertices.ToArray();
-        _mesh.uv = uv.ToArray();
+        //_mesh.uv = uv.ToArray();
         _mesh.triangles = triangles.ToArray();
 
         Debug.Log(triangles.Count);
 
         _mesh.RecalculateNormals();
+        //_goMesh.GetComponent<MeshRenderer>().
     }
 }
