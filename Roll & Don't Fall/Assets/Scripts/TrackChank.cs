@@ -27,10 +27,7 @@ public class TrackChank
     {
         List<Vector3> vertices = new List<Vector3>();
         List<int> triangles = new List<int>();
-        List<Vector2> uv = new List<Vector2>();
-
-        //Vector3 firstPrevPoint = _basePoints[0];
-        //Vector3 secondPrevPoint = new Vector3(_basePoints[0].x + _axisDistance.x, _basePoints[0].y + _axisDistance.y, _basePoints[0].z + _axisDistance.z);
+        List<Vector2> uv = new List<Vector2>();       
 
         for (int i = 0; i < _sigmentNumber; i++)
         {
@@ -42,9 +39,6 @@ public class TrackChank
             vertices.Add(point);
             uv.Add(point);
             uv.Add(secondPoint);
-
-            //firstPrevPoint = point;
-            //secondPrevPoint = secondPoint;
         }
 
         for (int i = 0; i < _sigmentNumber * 2 - 2; i += 2)

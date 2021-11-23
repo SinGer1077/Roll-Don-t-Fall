@@ -11,13 +11,21 @@ public class TrackChankGenerator : MonoBehaviour
     private Transform _firstPosition;
 
     [SerializeField]
-    private int _defaultChanksCount = 10;
+    private int _defaultChanksCount = 100;
 
     private List<GameObject> _chankList;
 
     private List<TrackChank> _chankData;
 
     private Vector3 _lastPointPosition;
+
+    private float _trackFirstPointX = 0f;
+
+    private float _trackFirstPointZ = 0f;
+
+    private float _trackSecondPointX = 0f;
+
+    private float _trackSecondPointZ = 0f;
 
     private void Start()
     {
@@ -28,8 +36,6 @@ public class TrackChankGenerator : MonoBehaviour
         _lastPointPosition = _firstPosition.position;
 
         GenerateChanks(_defaultChanksCount);
-
-        //Example();
     }
 
     private void GenerateChanks(int chankCount)
@@ -39,7 +45,7 @@ public class TrackChankGenerator : MonoBehaviour
             GameObject chank = new GameObject("Chank");            
             chank.transform.SetParent(_parent);
 
-            TrackChank chankData = new TrackChank(new Vector3[] {_lastPointPosition,  NextPositionRandomizer(), NextPositionRandomizer(), NextPositionRandomizer()});
+            TrackChank chankData = new TrackChank(new Vector3[] {_lastPointPosition,  NextFirstpointPositionRandomizer(), NextSecondpointPositionRandomizer(), _lastPointPosition});
             chankData.FormChank();
 
             MeshRenderer meshRenderer = chank.AddComponent<MeshRenderer>();
@@ -49,10 +55,7 @@ public class TrackChankGenerator : MonoBehaviour
             meshFilter.sharedMesh =  chankData.ChankMesh;            
 
             MeshCollider collider = chank.AddComponent<MeshCollider>();
-            collider.sharedMesh = chankData.ChankMesh;
-
-            //Quaternion 
-            //chank.transform.rotation
+            collider.sharedMesh = chankData.ChankMesh;           
 
             _chankList.Add(chank);
             _chankData.Add(chankData);           
@@ -61,75 +64,31 @@ public class TrackChankGenerator : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        //for (int i = 0; i < _chankData[0].ChankMesh.vertices.Length; i++)
-        //{
-        //    Gizmos.DrawSphere(_chankData[0].ChankMesh.vertices[i], 0.1f);
-        //}
-
-        //foreach (TrackChank x in _chankData)
-        //{
-        //    Gizmos.DrawMesh(x.ChankMesh);
-        //}
+        Gizmos.DrawSphere(_lastPointPosition, 10.0f);
     }
 
-    private Vector3 NextPositionRandomizer()
+    private Vector3 NextFirstpointPositionRandomizer()
     {
-        float z = Random.Range(5f, 15f);
-        float x = Random.Range(-15f, 15f);
-        Vector3 result = new Vector3(_lastPointPosition.x + x, _lastPointPosition.y, _lastPointPosition.z + z);
+        _trackFirstPointX += Random.Range(5f, 15f);
+        _trackFirstPointZ += Random.Range(-30f, 30f);
+        Vector3 result = new Vector3(_lastPointPosition.x + _trackFirstPointX, _lastPointPosition.y, _lastPointPosition.z + _trackFirstPointZ);
         _lastPointPosition = result;
+
+        GameObject mya = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        mya.transform.position = _lastPointPosition;
         
         return _lastPointPosition;
     }
-
-    public void Example()
+    private Vector3 NextSecondpointPositionRandomizer()
     {
-        float width = 1;
-        float height = 1;
+        _trackSecondPointX += Random.Range(5f, 15f);
+        _trackSecondPointZ += Random.Range(-30f, 30f);
+        Vector3 result = new Vector3(_lastPointPosition.x + _trackSecondPointX, _lastPointPosition.y, _lastPointPosition.z + _trackSecondPointZ);
+        _lastPointPosition = result;
 
-        MeshRenderer meshRenderer = gameObject.AddComponent<MeshRenderer>();
-        meshRenderer.sharedMaterial = new Material(Shader.Find("Standard"));
+        GameObject mya = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        mya.transform.position = _lastPointPosition;
 
-        MeshFilter meshFilter = gameObject.AddComponent<MeshFilter>();
-
-        Mesh mesh = new Mesh();
-
-        Vector3[] vertices = new Vector3[4]
-        {
-            new Vector3(0, 0, 0),
-            new Vector3(width, 0, 0),
-            new Vector3(0, height, 0),
-            new Vector3(width, height, 0)
-        };
-        mesh.vertices = vertices;
-
-        int[] tris = new int[6]
-        {
-            // lower left triangle
-            0, 2, 1,
-            // upper right triangle
-            2, 3, 1
-        };
-        mesh.triangles = tris;
-
-        Vector3[] normals = new Vector3[4]
-        {
-            -Vector3.forward,
-            -Vector3.forward,
-            -Vector3.forward,
-            -Vector3.forward
-        };
-        //mesh.normals = normals;
-
-        Vector2[] uv = new Vector2[4]
-        {
-            new Vector2(0, 0),
-            new Vector2(1, 0),
-            new Vector2(0, 1),
-            new Vector2(1, 1)
-        };
-        //mesh.uv = uv;
-
-        meshFilter.mesh = mesh;
+        return _lastPointPosition;
     }
 }
