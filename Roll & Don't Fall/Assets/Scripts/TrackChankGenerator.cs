@@ -40,12 +40,12 @@ public class TrackChankGenerator : MonoBehaviour
 
     private void GenerateChanks(int chankCount)
     {
-        for (int i = 0; i < chankCount; i++)
+        for (int i = 0; i < 1; i++)
         {
             GameObject chank = new GameObject("Chank");            
             chank.transform.SetParent(_parent);
 
-            TrackChank chankData = new TrackChank(new Vector3[] {_lastPointPosition,  NextFirstpointPositionRandomizer(), NextSecondpointPositionRandomizer(), _lastPointPosition});
+            TrackChank chankData = new TrackChank(new Vector3[] {_lastPointPosition,  NextFirstpointPositionRandomizer(), NextSecondpointPositionRandomizer(), NextFirstpointPositionRandomizer()});
             chankData.FormChank();
 
             MeshRenderer meshRenderer = chank.AddComponent<MeshRenderer>();
@@ -64,30 +64,26 @@ public class TrackChankGenerator : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(_lastPointPosition, 10.0f);
+        
     }
 
     private Vector3 NextFirstpointPositionRandomizer()
     {
-        _trackFirstPointX += Random.Range(5f, 15f);
-        _trackFirstPointZ += Random.Range(-30f, 30f);
+        _trackFirstPointX += 30f;
+        _trackFirstPointZ += 10f;
         Vector3 result = new Vector3(_lastPointPosition.x + _trackFirstPointX, _lastPointPosition.y, _lastPointPosition.z + _trackFirstPointZ);
         _lastPointPosition = result;
-
-        GameObject mya = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        mya.transform.position = _lastPointPosition;
+        Debug.Log(_lastPointPosition);
         
         return _lastPointPosition;
     }
     private Vector3 NextSecondpointPositionRandomizer()
     {
-        _trackSecondPointX += Random.Range(5f, 15f);
-        _trackSecondPointZ += Random.Range(-30f, 30f);
+        _trackSecondPointX += -30f;
+        _trackSecondPointZ += 10f;
         Vector3 result = new Vector3(_lastPointPosition.x + _trackSecondPointX, _lastPointPosition.y, _lastPointPosition.z + _trackSecondPointZ);
         _lastPointPosition = result;
-
-        GameObject mya = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        mya.transform.position = _lastPointPosition;
+        Debug.Log(_lastPointPosition);
 
         return _lastPointPosition;
     }

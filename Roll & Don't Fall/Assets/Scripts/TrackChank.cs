@@ -29,7 +29,7 @@ public class TrackChank
         List<int> triangles = new List<int>();
         List<Vector2> uv = new List<Vector2>();       
 
-        for (int i = 0; i < _sigmentNumber; i++)
+        for (int i = 0; i < _sigmentNumber + 1; i++)
         {
             float parameter = (float)i / _sigmentNumber;
             Vector3 point = Bezier.GetPoint(_basePoints[0], _basePoints[1], _basePoints[2], _basePoints[3], parameter);
