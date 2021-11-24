@@ -41,7 +41,7 @@ public class TrackChank
             uv.Add(secondPoint);
         }
 
-        for (int i = 0; i < _sigmentNumber * 2 - 2; i += 2)
+        for (int i = 0; i < (_sigmentNumber + 1) * 2 - 2; i += 2)
         {
             triangles.Add(i);
             triangles.Add(i + 1);

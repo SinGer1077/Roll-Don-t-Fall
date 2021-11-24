@@ -40,12 +40,14 @@ public class TrackChankGenerator : MonoBehaviour
 
     private void GenerateChanks(int chankCount)
     {
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 10; i++)
         {
             GameObject chank = new GameObject("Chank");            
             chank.transform.SetParent(_parent);
 
-            TrackChank chankData = new TrackChank(new Vector3[] {_lastPointPosition,  NextFirstpointPositionRandomizer(), NextSecondpointPositionRandomizer(), NextFirstpointPositionRandomizer()});
+            //TrackChank chankData = new TrackChank(new Vector3[] {_lastPointPosition,  NextFirstpointPositionRandomizer(), NextSecondpointPositionRandomizer(), NextFirstpointPositionRandomizer()});
+            int random = Random.Range(0, 3);
+            TrackChank chankData = new TrackChank(TrackTypes.GetRandomTrackType(_lastPointPosition, random));
             chankData.FormChank();
 
             MeshRenderer meshRenderer = chank.AddComponent<MeshRenderer>();
@@ -58,7 +60,9 @@ public class TrackChankGenerator : MonoBehaviour
             collider.sharedMesh = chankData.ChankMesh;           
 
             _chankList.Add(chank);
-            _chankData.Add(chankData);           
+            _chankData.Add(chankData);
+
+            _lastPointPosition = chankData.BasePoints[3];
         }
     }
 
