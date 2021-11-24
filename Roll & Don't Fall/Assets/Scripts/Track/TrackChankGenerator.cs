@@ -60,6 +60,18 @@ namespace RollDontFall.TrackModule
                 MeshCollider collider = chank.AddComponent<MeshCollider>();
                 collider.sharedMesh = chankData.ChankMesh;
 
+                if (random == (int)TrackTypes.Types.Straight)
+                {
+                    if (chankData.GetChankLength() <= 10f)
+                    {
+                        chank.AddComponent<ChankUpDown>();
+                    }
+                    else
+                    {
+                        chank.AddComponent<ChankDynamicScale>();
+                    }
+                }
+
                 _chankList.Add(chank);
                 _chankData.Add(chankData);
 

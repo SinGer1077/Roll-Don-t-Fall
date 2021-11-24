@@ -65,5 +65,10 @@ namespace RollDontFall.TrackModule
         {
             _axisDistance = newDistance;
         }
+
+        public float GetChankLength()
+        {
+            return _basePoints[3].z - _basePoints[0].z;
+        }
     }
 }

@@ -6,11 +6,22 @@ namespace RollDontFall.TrackModule
     {
         private static float trackLength = 40f;
 
+        public enum Types
+        {
+            Straight, 
+            HorizontalArc,
+            DoubleHorizontalArc
+        };
+
         public static Vector3[] Straight(Vector3 firstPoint)
         {
+            trackLength = Random.Range(5f, 40f);
+
             Vector3 secondPosition = new Vector3(firstPoint.x, firstPoint.y, firstPoint.z + trackLength / 4);
             Vector3 thirdPosition = new Vector3(firstPoint.x, firstPoint.y, secondPosition.z + trackLength / 4);
             Vector3 fourthPosition = new Vector3(firstPoint.x, firstPoint.y, thirdPosition.z + trackLength / 4);
+
+            trackLength = 40f;
             return new Vector3[] { firstPoint, secondPosition, thirdPosition, fourthPosition };
         }
 
