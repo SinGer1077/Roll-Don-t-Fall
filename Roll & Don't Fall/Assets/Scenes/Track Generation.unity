@@ -152,7 +152,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _parent: {fileID: 308508612}
   _firstPosition: {fileID: 1688128736}
-  _defaultChanksCount: 10
+  _defaultChanksCount: 100
+  _chankUpDownAnimation: {fileID: 9100000, guid: 3f265e40c88be2840991b068c340e680,
+    type: 2}
 --- !u!4 &308508612
 Transform:
   m_ObjectHideFlags: 0
@@ -351,6 +353,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1688128736}
+  - component: {fileID: 1688128737}
   m_Layer: 0
   m_Name: FirstPosition
   m_TagString: Untagged
@@ -372,3 +375,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1688128737
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688128735}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
