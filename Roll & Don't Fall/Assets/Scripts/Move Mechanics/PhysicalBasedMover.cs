@@ -22,7 +22,10 @@ public class PhysicalBasedMover : MonoBehaviour
     /// какой тип передвижения будем использовать
     /// </summary>
     [SerializeField]
-    private MovingType _movingType;    
+    private MovingType _movingType;
+
+    [SerializeField]
+    private float _speed = 1f;
 
     /// <summary>
     /// флаг, двигаемся ли мы в определенный момент
@@ -47,7 +50,13 @@ public class PhysicalBasedMover : MonoBehaviour
     /// <summary>
     /// порог скорости для движения персонажа
     /// </summary>
-    private float _maxSpeed = 10f;  
+    private float _maxSpeed = 10f;
+
+    private void Start()
+    {
+        _acceleraionCoef *= _speed;
+        _fixedSpeedCoef *= _speed;
+    }
 
     private void FixedUpdate()
     {
