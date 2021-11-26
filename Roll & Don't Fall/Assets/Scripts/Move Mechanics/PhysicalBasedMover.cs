@@ -32,6 +32,8 @@ public class PhysicalBasedMover : MonoBehaviour
     /// </summary>
     private bool _isMoving = false;
 
+    public bool IsMoving => _isMoving;
+
     /// <summary>
     /// данные, полученные с геймпада
     /// </summary>

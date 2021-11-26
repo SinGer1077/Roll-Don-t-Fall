@@ -20,6 +20,9 @@ namespace RollDontFall.TrackModule
         [SerializeField]
         private Material _trackMaterial;
 
+        [SerializeField]
+        private Transform _character;
+
         private List<GameObject> _chankList;
 
         private List<TrackChank> _chankData;
@@ -35,6 +38,17 @@ namespace RollDontFall.TrackModule
             _lastPointPosition = _firstPosition.position;
 
             GenerateChanks(_defaultChanksCount);
+        }
+
+        private void Update()
+        {
+            if ((_character.position.z - _chankData[0].BasePoints[0].z > 50f))
+            {
+                Destroy(_chankList[0]);
+                _chankData.RemoveAt(0);
+                _chankList.RemoveAt(0);                
+                GenerateChanks(1);
+            }
         }
 
         private void GenerateChanks(int chankCount)
@@ -74,5 +88,7 @@ namespace RollDontFall.TrackModule
                 _lastPointPosition = chankData.BasePoints[3];
             }
         }        
+
+        
     }
 }

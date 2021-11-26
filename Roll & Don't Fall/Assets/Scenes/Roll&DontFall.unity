@@ -151,7 +151,7 @@ Transform:
   - {fileID: 160353197}
   - {fileID: 1784681360}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &160353195
 GameObject:
@@ -184,10 +184,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _parent: {fileID: 160353197}
   _firstPosition: {fileID: 1784681360}
-  _defaultChanksCount: 100
+  _defaultChanksCount: 3
   _chankUpDownAnimation: {fileID: 9100000, guid: 3f265e40c88be2840991b068c340e680,
     type: 2}
   _trackMaterial: {fileID: 2100000, guid: c0ca5206c7338df479378b736fe7fc0a, type: 2}
+  _character: {fileID: 1586122443}
 --- !u!4 &160353197
 Transform:
   m_ObjectHideFlags: 0
@@ -532,7 +533,7 @@ PrefabInstance:
     - target: {fileID: 6190659424077475270, guid: ceb8b0358cfa435439c7a98253171c0c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6190659424077475270, guid: ceb8b0358cfa435439c7a98253171c0c,
         type: 3}
@@ -606,6 +607,12 @@ MonoBehaviour:
 --- !u!1 &1586122437 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6190659424077475290, guid: ceb8b0358cfa435439c7a98253171c0c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1586122435}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1586122443 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6190659424077475270, guid: ceb8b0358cfa435439c7a98253171c0c,
     type: 3}
   m_PrefabInstance: {fileID: 1586122435}
   m_PrefabAsset: {fileID: 0}
