@@ -17,6 +17,9 @@ namespace RollDontFall.TrackModule
         [SerializeField]
         private RuntimeAnimatorController _chankUpDownAnimation;
 
+        [SerializeField]
+        private Material _trackMaterial;
+
         private List<GameObject> _chankList;
 
         private List<TrackChank> _chankData;
@@ -47,6 +50,7 @@ namespace RollDontFall.TrackModule
 
                 MeshRenderer meshRenderer = chank.AddComponent<MeshRenderer>();
                 meshRenderer.sharedMaterial = new Material(Shader.Find("Standard"));
+                meshRenderer.material = _trackMaterial;
 
                 MeshFilter meshFilter = chank.AddComponent<MeshFilter>();
                 meshFilter.sharedMesh = chankData.ChankMesh;
