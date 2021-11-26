@@ -57,6 +57,7 @@ namespace RollDontFall.TrackModule
             {
                 GameObject chank = new GameObject("Chank");
                 chank.transform.SetParent(_parent);
+                chank.tag = "Track";
 
                 int random = Random.Range(0, 3);
                 TrackChank chankData = new TrackChank(TrackTypes.GetRandomTrackType(_lastPointPosition, random));
