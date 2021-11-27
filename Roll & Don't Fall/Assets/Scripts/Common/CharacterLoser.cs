@@ -18,9 +18,9 @@ public class CharacterLoser : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Track")
+        if (collision.gameObject.tag == "Track" && _isUntouch == true)
         {
             _isUntouch = false;
             _timer = 0;
@@ -29,6 +29,7 @@ public class CharacterLoser : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(_isUntouch);
         if (_isUntouch)
         {
             _timer += Time.deltaTime;
