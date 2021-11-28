@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CharacterLoser : MonoBehaviour
 {
+    [SerializeField]
+    private GameEnder _ender;
+
     private float _timeToLose = 3f;
 
     private float _timer = 0f;
@@ -29,14 +32,19 @@ public class CharacterLoser : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_isUntouch);
         if (_isUntouch)
         {
             _timer += Time.deltaTime;
             if (_timer >= _timeToLose)
             {
-                Time.timeScale = 0;
+                EndGame();
             }
         }
+    }
+
+    public void EndGame()
+    {
+        Time.timeScale = 0;
+        _ender.EndGame();
     }
 }

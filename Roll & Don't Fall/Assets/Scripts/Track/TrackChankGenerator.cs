@@ -32,6 +32,7 @@ namespace RollDontFall.TrackModule
         private void Start()
         {
             Debug.Log("Программа началась ");
+            Time.timeScale = 1;
 
             _chankList = new List<GameObject>();
             _chankData = new List<TrackChank>();
