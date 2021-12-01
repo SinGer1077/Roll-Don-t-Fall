@@ -4,14 +4,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
+using UnityEngine.UI;
+
 public class PhysicalBasedMover : MonoBehaviour
 {
-    /// <summary>
-    /// данные с геймпада, положение шарика
-    /// </summary>
-    [SerializeField]
-    private PlayerInput _playerInput; 
-
     /// <summary>
     /// персонаж
     /// </summary>
@@ -26,6 +22,9 @@ public class PhysicalBasedMover : MonoBehaviour
 
     [SerializeField]
     private float _speed = 1f;
+
+    [SerializeField]
+    private Joystick _stick;
 
     /// <summary>
     /// флаг, двигаемся ли мы в определенный момент
@@ -66,7 +65,7 @@ public class PhysicalBasedMover : MonoBehaviour
         if (_isMoving)
         {
             //получаем позицию геймпада
-            _moveDirection = _playerInput.actions["Move"].ReadValue<Vector2>();
+            _moveDirection = new Vector2(_stick.Horizontal, _stick.Vertical);
             Movement(_movingType);            
         }    
     }

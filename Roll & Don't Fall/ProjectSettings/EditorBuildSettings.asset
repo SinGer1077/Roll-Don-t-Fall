@@ -8,4 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Roll&DontFall.unity
     guid: 713dc685a62594b4fa9f34b4807242d4
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 54f7b171b456f504da04fbabb4824ae6,
+      type: 2}
