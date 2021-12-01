@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -853,6 +853,116 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1470728910}
     m_Modifications:
+    - target: {fileID: 874490113750826342, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 874490113750826342, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 874490113750826342, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 874490113750826342, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 874490113750826342, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1586122436}
+    - target: {fileID: 874490113750826342, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1586122436}
+    - target: {fileID: 874490113750826342, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 874490113750826342, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 874490113750826342, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartMoveBody
+      objectReference: {fileID: 0}
+    - target: {fileID: 874490113750826342, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EndMoveBody
+      objectReference: {fileID: 0}
+    - target: {fileID: 874490113750826342, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 874490113750826342, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199963263954437648, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199963263954437648, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199963263954437648, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199963263954437648, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199963263954437648, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199963263954437648, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199963263954437648, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -250
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199963263954437648, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4135310973775214348, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342447090901107334, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7995373022431605544, guid: 7235217e21c589d42818f1c47f0d840b,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -872,6 +982,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: EndMoveBody
+      objectReference: {fileID: 0}
+    - target: {fileID: 7995373022431605548, guid: 7235217e21c589d42818f1c47f0d840b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7995373022638671905, guid: 7235217e21c589d42818f1c47f0d840b,
         type: 3}
