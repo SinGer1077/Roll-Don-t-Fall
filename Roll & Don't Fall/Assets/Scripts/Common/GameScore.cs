@@ -9,6 +9,10 @@ public class GameScore : MonoBehaviour
     [SerializeField]
     private Text _scoreText;
 
+    private int _score = 0;
+
+    public int Score => _score;
+
     private Vector3 _firstPosition;
     void Start()
     {
@@ -17,6 +21,7 @@ public class GameScore : MonoBehaviour
 
     void Update()
     {
-        _scoreText.text = "Distance: " + ((int)(_character.position.z - _firstPosition.z)).ToString();
+        _score = (int)(_character.position.z - _firstPosition.z);
+        _scoreText.text = "Distance: " + _score.ToString();
     }
 }

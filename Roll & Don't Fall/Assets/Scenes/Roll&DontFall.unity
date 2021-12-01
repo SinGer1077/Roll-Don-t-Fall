@@ -465,6 +465,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _endGameCanvas: {fileID: 992651208}
+  _score: {fileID: 775669934}
+  _finalText: {fileID: 1991776689}
 --- !u!1 &572191745
 GameObject:
   m_ObjectHideFlags: 0
