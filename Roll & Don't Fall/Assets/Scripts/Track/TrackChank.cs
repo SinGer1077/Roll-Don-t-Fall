@@ -11,7 +11,7 @@ namespace RollDontFall.TrackModule
 
         private int _sigmentNumber = 40;
 
-        private Vector3 _axisDistance = new Vector3(5f, 0, 0);
+        private Vector3 _axisDistance = new Vector3(10f, 0, 0);
 
         public Vector3 AxisDistance => _axisDistance;
 

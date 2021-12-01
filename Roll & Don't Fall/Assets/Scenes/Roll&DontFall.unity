@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _parent: {fileID: 160353197}
   _firstPosition: {fileID: 1784681360}
-  _defaultChanksCount: 3
+  _defaultChanksCount: 10
   _chankUpDownAnimation: {fileID: 9100000, guid: 3f265e40c88be2840991b068c340e680,
     type: 2}
   _trackMaterial: {fileID: 2100000, guid: c0ca5206c7338df479378b736fe7fc0a, type: 2}
@@ -1363,7 +1363,7 @@ PrefabInstance:
     - target: {fileID: 6190659424077475270, guid: ceb8b0358cfa435439c7a98253171c0c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6190659424077475270, guid: ceb8b0358cfa435439c7a98253171c0c,
         type: 3}
@@ -1373,7 +1373,7 @@ PrefabInstance:
     - target: {fileID: 6190659424077475270, guid: ceb8b0358cfa435439c7a98253171c0c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6190659424077475270, guid: ceb8b0358cfa435439c7a98253171c0c,
         type: 3}
@@ -2004,7 +2004,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2075307003
 MonoBehaviour:
   m_ObjectHideFlags: 0
