@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Roll&DontFall.unity
+    guid: 713dc685a62594b4fa9f34b4807242d4
   m_configObjects: {}
