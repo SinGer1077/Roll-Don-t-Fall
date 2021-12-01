@@ -28,14 +28,17 @@ namespace RollDontFall.TrackModule
         {
             List<Vector3> vertices = new List<Vector3>();
             List<int> triangles = new List<int>();
-            List<Vector2> uv = new List<Vector2>();
+
+            List<Vector3> verticesSecondSide = new List<Vector3>();
+            List<int> trianglesSecondSide = new List<int>();
 
             Vector3 firstPoint = Bezier.GetPoint(_basePoints[0], _basePoints[1], _basePoints[2], _basePoints[3], 0);
             Vector3 secondPoint = new Vector3(firstPoint.x + _axisDistance.x, firstPoint.y + _axisDistance.y, firstPoint.z + _axisDistance.z);
             vertices.Add(secondPoint);
             vertices.Add(firstPoint);
-            uv.Add(firstPoint);
-            uv.Add(secondPoint);
+
+            verticesSecondSide.Add(firstPoint);
+            verticesSecondSide.Add(secondPoint);
 
             for (int i = 1; i < _sigmentNumber + 1; i++)
             {
@@ -46,8 +49,9 @@ namespace RollDontFall.TrackModule
 
                 vertices.Add(rightPoint);
                 vertices.Add(point);
-                uv.Add(point);
-                uv.Add(rightPoint);
+
+                verticesSecondSide.Add(point);
+                verticesSecondSide.Add(rightPoint);               
             }
 
             for (int i = 0; i < (_sigmentNumber + 1) * 2 - 2; i += 2)
@@ -59,12 +63,22 @@ namespace RollDontFall.TrackModule
                 triangles.Add(i + 3);
                 triangles.Add(i + 2);
                 triangles.Add(i + 1);
+
+                trianglesSecondSide.Add(i + vertices.Count);
+                trianglesSecondSide.Add(i + 1 + vertices.Count);
+                trianglesSecondSide.Add(i + 2 + vertices.Count);
+
+                trianglesSecondSide.Add(i + 3 + vertices.Count);
+                trianglesSecondSide.Add(i + 2 + vertices.Count);
+                trianglesSecondSide.Add(i + 1 + vertices.Count);
             }
 
             _mesh = new Mesh();
 
+            vertices.AddRange(verticesSecondSide);
+            triangles.AddRange(trianglesSecondSide);
+
             _mesh.vertices = vertices.ToArray();
-            _mesh.uv = uv.ToArray();
             _mesh.triangles = triangles.ToArray();
             _mesh.RecalculateNormals();
         }
