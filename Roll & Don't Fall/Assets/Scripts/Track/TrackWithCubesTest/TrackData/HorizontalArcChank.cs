@@ -17,7 +17,7 @@ public class HorizontalArcChank : Chank
 
     public override void GenerateChank()
     {
-        float arcCoef = 10f;
+        float arcCoef = 50f;
         float arcDistance = Random.Range(-arcCoef * this.DifficultLevel, arcCoef * this.DifficultLevel);
 
         Vector3 secondPosition = new Vector3(this.FirstPosition.x, this.FirstPosition.y, this.FirstPosition.z + this.Length / 4);
