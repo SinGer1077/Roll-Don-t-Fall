@@ -24,7 +24,7 @@ public class HorizontalArcChank : Chank
         Vector3 thirdPosition = new Vector3(this.FirstPosition.x + arcDistance, this.FirstPosition.y, secondPosition.z + this.Length / 4);
         Vector3 fourthPosition = new Vector3(this.FirstPosition.x, this.FirstPosition.y, thirdPosition.z + this.Length / 4);
 
-        TrackChank track = new TrackChank(new Vector3[] { this.FirstPosition, secondPosition, thirdPosition, fourthPosition });
+        TrackChankFiller track = new TrackChankFiller(new Vector3[] { this.FirstPosition, secondPosition, thirdPosition, fourthPosition });
         track.FormChank();
         AddBezierLine(track);
         SetLastPos(fourthPosition);

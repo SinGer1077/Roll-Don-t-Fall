@@ -23,9 +23,9 @@ public abstract class Chank
 
     public Vector3 LastPosistion => _lastPosition;
 
-    private List<TrackChank> _bezierLines;
+    private List<TrackChankFiller> _bezierLines;
 
-    public List<TrackChank> BezierLines => _bezierLines;
+    public List<TrackChankFiller> BezierLines => _bezierLines;
 
     private Material _chankMaterial;
 
@@ -37,13 +37,13 @@ public abstract class Chank
         _chankMaterial = material;
         Length = 40f;
 
-        _bezierLines = new List<TrackChank>();
+        _bezierLines = new List<TrackChankFiller>();
 
-        GenerateChank();
+        TrackChankFiller chankFiller = GenerateChank();
         GenerateSubLinesObjects();
     }
 
-    public void AddBezierLine(TrackChank line)
+    public void AddBezierLine(TrackChankFiller line)
     {
         _bezierLines.Add(line);
     }
@@ -53,30 +53,31 @@ public abstract class Chank
         _lastPosition = position;
     }
 
-    public abstract void GenerateChank();       
+    public abstract TrackChankFiller GenerateChank();       
 
-    public virtual void AddComponentsOnGO(GameObject go, TrackChank chank)
+    public virtual void AddComponentsOnGO(GameObject go, TrackChankFiller chank)
     {
         go.tag = "Track";
 
-        MeshRenderer meshRenderer = go.AddComponent<MeshRenderer>();
-        meshRenderer.sharedMaterial = new Material(Shader.Find("Standard"));
-        meshRenderer.material = _chankMaterial;
+        //MeshRenderer meshRenderer = go.AddComponent<MeshRenderer>();
+        //meshRenderer.sharedMaterial = new Material(Shader.Find("Standard"));
+        //meshRenderer.material = _chankMaterial;
         
-        MeshFilter meshFilter = go.AddComponent<MeshFilter>();
-        meshFilter.sharedMesh = chank.ChankMesh;
+        //MeshFilter meshFilter = go.AddComponent<MeshFilter>();
+        //meshFilter.sharedMesh = chank.ChankMesh;
 
-        MeshCollider collider = go.AddComponent<MeshCollider>();
-        collider.sharedMesh = chank.ChankMesh;
+        //MeshCollider collider = go.AddComponent<MeshCollider>();
+        //collider.sharedMesh = chank.ChankMesh;
     }
 
     public void GenerateSubLinesObjects()
     {
         for (int i = 0; i < _bezierLines.Count; i++)
         {
-            GameObject child = new GameObject();
+            GameObject child = new GameObject("Bezier Line");
             child.transform.SetParent(_gameObject.transform);
             AddComponentsOnGO(child, _bezierLines[i]);
         }
-    }   
+    }
+    
 }
