@@ -15,7 +15,7 @@ public class HorizontalArcChank : Chank
         Debug.Log("Я повортоный чанк");
     }
 
-    public override void GenerateChank()
+    public override TrackChankFiller GenerateChank()
     {
         float arcCoef = 50f;
         float arcDistance = Random.Range(-arcCoef * this.DifficultLevel, arcCoef * this.DifficultLevel);
@@ -28,5 +28,6 @@ public class HorizontalArcChank : Chank
         track.FormChank();
         AddBezierLine(track);
         SetLastPos(fourthPosition);
+        return track;
     }
 }

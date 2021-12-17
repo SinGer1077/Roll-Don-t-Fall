@@ -16,7 +16,7 @@ public class StraightChank : Chank
         Debug.Log("Я прямой чанк");
     }
 
-    public override void GenerateChank()
+    public override TrackChankFiller GenerateChank()
     {
         Vector3 secondPosition = new Vector3(this.FirstPosition.x, this.FirstPosition.y, this.FirstPosition.z + this.Length / 4);
         Vector3 thirdPosition = new Vector3(this.FirstPosition.x, this.FirstPosition.y, secondPosition.z + this.Length / 4);
@@ -26,5 +26,6 @@ public class StraightChank : Chank
         track.FormChank();
         AddBezierLine(track);
         SetLastPos(fourthPosition);
+        return track;
     }
 }
