@@ -9,6 +9,36 @@ public class PathEditor : Editor
     PathCreator creator;
     Path path;
 
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+
+        EditorGUI.BeginChangeCheck();
+        if (GUILayout.Button("Create new"))
+        {
+            Undo.RecordObject(creator, "Create new");
+            creator.CreatePath();
+            path = creator.path;
+        }
+
+        if (GUILayout.Button("Togge closed"))
+        {
+            Undo.RecordObject(creator, "Toggle closed");
+            path.ToggleClosed();
+        }
+
+        bool autoSetControlPoints = GUILayout.Toggle(path.AutoSetControlPoint, "Auto Set Control Points");
+        if (autoSetControlPoints != path.AutoSetControlPoint)
+        {
+            Undo.RecordObject(creator, "Toggle auto set controls");
+            path.AutoSetControlPoint = autoSetControlPoints;
+        }
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            SceneView.RepaintAll();
+        }
+    }
     private void OnSceneGUI()
     {
         Input();
