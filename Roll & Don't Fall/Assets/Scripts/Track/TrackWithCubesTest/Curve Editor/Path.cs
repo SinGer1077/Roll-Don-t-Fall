@@ -28,6 +28,11 @@ public class Path
         };
     }
 
+    public bool IsClosed()
+    {
+        return isClosed;
+    }
+
     public Vector3 this[int i]
     {
         get
