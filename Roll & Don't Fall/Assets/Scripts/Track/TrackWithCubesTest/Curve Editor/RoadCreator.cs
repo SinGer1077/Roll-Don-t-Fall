@@ -31,7 +31,7 @@ public class RoadCreator : MonoBehaviour
         Vector3[] verts = new Vector3[points.Length * 2];
         Vector2[] uvs = new Vector2[verts.Length];
         int numTris = 2 * (points.Length - 1) + ((isClosed) ? 2 : 0);
-        int[] tris = new int[numTris * 3];
+        int[] tris = new int[numTris * 3 * 4];
         int vertIndex = 0;
         int triIndex = 0;
 
@@ -51,7 +51,8 @@ public class RoadCreator : MonoBehaviour
 
             forward.Normalize();
 
-            Vector3 left = new Vector3(-forward.y, forward.x, forward.z);
+            //Vector3 left = new Vector3(-forward.y, forward.x, forward.z);
+            Vector3 left = new Vector3(-forward.y, forward.z, forward.x);
 
             verts[vertIndex] = points[i] + left * roadWidth * 0.5f;
             verts[vertIndex + 1] = points[i] - left * roadWidth * 0.5f;
@@ -64,23 +65,32 @@ public class RoadCreator : MonoBehaviour
 
             if (i < points.Length - 1 || isClosed)
             {
-                tris[triIndex] = vertIndex;
+                tris[triIndex + 6] = vertIndex;
+                tris[triIndex + 7] = (vertIndex + 2) % verts.Length;
+                tris[triIndex + 8] = vertIndex + 1;
+
+                tris[triIndex + 2] = vertIndex;
                 tris[triIndex + 1] = (vertIndex + 2) % verts.Length;
-                tris[triIndex + 2] = vertIndex + 1;
+                tris[triIndex] = vertIndex + 1;
+
+                tris[triIndex + 11] = vertIndex + 1;
+                tris[triIndex + 10] = (vertIndex + 2) % verts.Length;
+                tris[triIndex + 9] = (vertIndex + 3) % verts.Length;
 
                 tris[triIndex + 3] = vertIndex + 1;
                 tris[triIndex + 4] = (vertIndex + 2) % verts.Length;
-                tris[triIndex + 5] = (vertIndex + 3) % verts.Length;
+                tris[triIndex + 5] = (vertIndex + 3) % verts.Length;                
             }
 
             vertIndex += 2;
-            triIndex += 6;
+            triIndex += 12;
         }
 
         Mesh mesh = new Mesh();
         mesh.vertices = verts;
-        mesh.triangles = tris;
+        mesh.triangles = tris;            
         mesh.uv = uvs;
+        mesh.RecalculateNormals();
 
         return mesh;
     }
