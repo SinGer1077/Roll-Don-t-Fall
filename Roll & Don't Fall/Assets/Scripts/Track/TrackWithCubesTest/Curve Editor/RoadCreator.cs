@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(PathCreator))]
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
+[RequireComponent(typeof(MeshCollider))]
 public class RoadCreator : MonoBehaviour
 {
     public float roadWidth = 1;

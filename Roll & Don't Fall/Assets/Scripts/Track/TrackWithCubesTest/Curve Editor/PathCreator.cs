@@ -11,4 +11,9 @@ public class PathCreator : MonoBehaviour
     {
         path = new Path(transform.position);
     }
+
+    private void Awake()
+    {
+        CreatePath();
+    }
 }

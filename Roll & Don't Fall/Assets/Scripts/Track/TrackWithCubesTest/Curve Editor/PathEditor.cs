@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(PathCreator))]
+//[CustomEditor(typeof(PathCreator))]
 public class PathEditor : Editor
 {
     PathCreator creator;
@@ -79,7 +79,7 @@ public class PathEditor : Editor
         }        
     }
 
-    private void OnEnable()
+    private void Start()
     {
         creator = (PathCreator)target;
         if (creator.path == null)

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +19,8 @@ public class RoadGenerator : MonoBehaviour
 
     public void GenerateChank()
     {
-        IChank chank = _accessibleChankTypes[Random.Range(0, _accessibleChankTypes.Count)];
-        chank.Create();
+        IChank chank = _accessibleChankTypes[UnityEngine.Random.Range(0, _accessibleChankTypes.Count)];
+        GameObject goChank = new GameObject("Chank", chank.GetType());
+        goChank.transform.SetParent(this.transform);
     }
 }

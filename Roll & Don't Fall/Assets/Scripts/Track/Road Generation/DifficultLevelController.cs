@@ -9,7 +9,14 @@ public class DifficultLevelController : MonoBehaviour
     [SerializeField]
     private RoadGenerator _roadGenerator;
 
+    [SerializeField]
+    private Material[] _levelMaterials;
+
+    public Material[] LevelMaterials => _levelMaterials;
+
     private int _currentDifficultLevel = 0;
+
+    public int CurrentDifficultLevel => _currentDifficultLevel;
 
 
     private Type[] _chankTypes;
