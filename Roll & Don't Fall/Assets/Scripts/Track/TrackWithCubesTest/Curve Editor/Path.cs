@@ -22,8 +22,10 @@ public class Path
         points = new List<Vector3>
         {
             centre + Vector3.left,
-            centre + (Vector3.left + Vector3.up) * 0.5f,
-            centre + (Vector3.right + Vector3.down) * 0.5f,
+            centre + Vector3.left,
+            //centre + (Vector3.left + Vector3.up) * 0.5f,
+            //centre + (Vector3.right + Vector3.down) * 0.5f,
+            centre + Vector3.right,
             centre + Vector3.right
         };
     }
