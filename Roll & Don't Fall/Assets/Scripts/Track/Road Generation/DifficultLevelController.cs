@@ -38,9 +38,9 @@ public class DifficultLevelController : MonoBehaviour
         foreach (Type chank in _chankTypes)
         {
             IChank type = (IChank)Activator.CreateInstance(chank);
-            if ((type as IChank).GetDifficultLevel() == difficultLevel)
+            if (type.GetDifficultLevel() == difficultLevel)
             {
-                _roadGenerator.AddAccessibleChankType(type as IChank);
+                _roadGenerator.AddAccessibleChankType(type);
             }
         }
         
