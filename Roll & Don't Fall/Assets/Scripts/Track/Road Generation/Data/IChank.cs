@@ -6,5 +6,7 @@ public interface IChank
 {
     int GetDifficultLevel();
 
+    Vector3 GetEndPoint();
+
     void Create();
 }

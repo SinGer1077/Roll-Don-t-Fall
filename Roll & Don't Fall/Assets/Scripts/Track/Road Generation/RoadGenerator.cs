@@ -23,4 +23,5 @@ public class RoadGenerator : MonoBehaviour
         GameObject goChank = new GameObject("Chank", chank.GetType());
         goChank.transform.SetParent(this.transform);
     }
+        
 }
