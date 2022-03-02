@@ -61,9 +61,14 @@ public class PathChankCreator : MonoBehaviour, IChank
 
     private Vector3 SetNextRandomPoint()
     {
-        Vector3 newPoint = new Vector3(_endPoint.x + Random.Range(0, 10),
-            _endPoint.y + Random.Range(0, 10),
-            _endPoint.z + Random.Range(0, 10));
+        //Vector3 newPoint = new Vector3(_endPoint.x + Random.Range(0, 10),
+        //    _endPoint.y + Random.Range(0, 10),
+        //    _endPoint.z + Random.Range(0, 10));
+
+        Vector3 newPoint = new Vector3(_endPoint.x + Random.Range(-10, 10),
+            _endPoint.y + Random.Range(0, 3),
+            _endPoint.z + Random.Range(-10, 10));
+
         return newPoint;
     }
 

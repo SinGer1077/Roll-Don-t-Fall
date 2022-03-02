@@ -15,7 +15,7 @@ public class Path
     bool isClosed;
 
     [SerializeField, HideInInspector]
-    bool autoSetControlPoints;
+    bool autoSetControlPoints = true;
 
     public Path(Vector3 centre)
     {

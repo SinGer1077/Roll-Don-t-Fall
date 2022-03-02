@@ -53,7 +53,8 @@ public class RoadCreator : MonoBehaviour
             forward.Normalize();
 
             //Vector3 left = new Vector3(-forward.y, forward.x, forward.z);
-            Vector3 left = new Vector3(-forward.y, forward.z, forward.x);
+            //Vector3 left = new Vector3(-forward.y, forward.z, forward.x);
+            Vector3 left = new Vector3(-forward.z, forward.y, forward.x);
 
             verts[vertIndex] = points[i] + left * roadWidth * 0.5f;
             verts[vertIndex + 1] = points[i] - left * roadWidth * 0.5f;
