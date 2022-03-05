@@ -44,30 +44,41 @@ public class PathChankCreator : MonoBehaviour, IChank
 
         _endPoint = _pathCurve.path[_pathCurve.path.NumPoints - 1];
 
-        for (int i = 0; i < 10; i++)
+
+        AddForwardSegment(9f);
+        for (int i = 0; i < 5; i++)
         {
             AddSegment();
-            _pathMesh.UpdateRoad();
         }
+        AddForwardSegment(15f);
+    }
+
+    private void AddForwardSegment(float length)
+    {
+        Vector3 nextPoint = new Vector3(_endPoint.x, _endPoint.y, _endPoint.z + length);
+        CurveUpdate(nextPoint);
     }
 
     private void AddSegment()
     {
         Vector3 nextPoint = SetNextRandomPoint();
-        _pathCurve.path.AddSegment(nextPoint);
+        CurveUpdate(nextPoint);
+    }
 
+    private void CurveUpdate(Vector3 nextPoint)
+    {
+        _pathCurve.path.AddSegment(nextPoint);
+        _pathMesh.UpdateRoad();
         _endPoint = nextPoint;
     }
 
     private Vector3 SetNextRandomPoint()
-    {
-        //Vector3 newPoint = new Vector3(_endPoint.x + Random.Range(0, 10),
-        //    _endPoint.y + Random.Range(0, 10),
-        //    _endPoint.z + Random.Range(0, 10));
-
-        Vector3 newPoint = new Vector3(_endPoint.x + Random.Range(-10, 10),
-            _endPoint.y + Random.Range(0, 3),
-            _endPoint.z + Random.Range(-10, 10));
+    {      
+        Vector3 newPoint = new Vector3(
+            _endPoint.x + Random.Range(-5, 5),
+            _endPoint.y + Random.Range(-1, 1),
+            _endPoint.z + Random.Range(-5, 5)
+            );
 
         return newPoint;
     }
