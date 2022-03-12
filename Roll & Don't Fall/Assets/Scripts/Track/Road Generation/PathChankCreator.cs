@@ -59,12 +59,12 @@ public class PathChankCreator : MonoBehaviour, IChank
         _endPoint = _pathCurve.path[_pathCurve.path.NumPoints - 1];
         Debug.Log(_endPoint);
 
-        AddForwardSegment(29f);
+        AddForwardSegment(15f);
         for (int i = 0; i < (_levelController.CurrentDifficultLevel + 1) * 20; i++)
         {
             AddSegment();
         }
-        AddForwardSegment(5f);
+        AddForwardSegment(15f);
 
         _roadGenerator.UpdateLastPosition(_endPoint);
     }
