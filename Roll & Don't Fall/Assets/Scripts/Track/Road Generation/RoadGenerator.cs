@@ -15,11 +15,12 @@ public class RoadGenerator : MonoBehaviour
     }
 
     private void Start()
-    {        
-        GenerateChank();
-        //Debug.Log(_lastPosition);
-        GenerateChank();
-        //Debug.Log(_lastPosition);
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            GenerateChank();
+        }
+       
     }
 
     public void AddAccessibleChankType(IChank chankType)

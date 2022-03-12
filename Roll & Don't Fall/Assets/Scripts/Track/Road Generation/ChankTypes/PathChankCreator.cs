@@ -50,7 +50,8 @@ public class PathChankCreator : MonoBehaviour, IChank
         _levelController = FindObjectOfType<DifficultLevelController>();
         _roadGenerator = transform.GetComponentInParent<RoadGenerator>();
 
-        _pathMesh = this.gameObject.AddComponent<RoadCreator>();        
+        _pathMesh = this.gameObject.AddComponent<RoadCreator>();
+        _pathMesh.roadWidth = 6 - _levelController.CurrentDifficultLevel;
         GetComponent<MeshRenderer>().sharedMaterial = _levelController.LevelMaterials[_levelController.CurrentDifficultLevel - 1];       
 
         _pathCurve = _pathMesh.GetComponent<PathCreator>();
