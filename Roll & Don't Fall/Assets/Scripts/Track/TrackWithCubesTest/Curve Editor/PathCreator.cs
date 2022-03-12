@@ -7,13 +7,13 @@ public class PathCreator : MonoBehaviour
     [HideInInspector]
     public Path path;
 
-    public void CreatePath()
+    public void CreatePath(Vector3 startPoint)
     {
-        path = new Path(transform.position);
+        path = new Path(startPoint);
     }
 
     private void Awake()
     {
-        CreatePath();
+        //CreatePath(transform.position);
     }
 }

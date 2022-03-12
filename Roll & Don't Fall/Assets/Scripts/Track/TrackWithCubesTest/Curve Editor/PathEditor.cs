@@ -17,7 +17,7 @@ public class PathEditor : Editor
         if (GUILayout.Button("Create new"))
         {
             Undo.RecordObject(creator, "Create new");
-            creator.CreatePath();
+            creator.CreatePath(Vector3.zero);
             path = creator.path;
         }
 
@@ -84,7 +84,7 @@ public class PathEditor : Editor
         creator = (PathCreator)target;
         if (creator.path == null)
         {
-            creator.CreatePath();            
+            creator.CreatePath(Vector3.zero);            
         }
         path = creator.path;
     }

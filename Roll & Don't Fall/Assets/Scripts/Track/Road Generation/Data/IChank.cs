@@ -8,5 +8,7 @@ public interface IChank
 
     Vector3 GetEndPoint();
 
+    void SetStartPoint(Vector3 startPoint);
+
     void Create();
 }
