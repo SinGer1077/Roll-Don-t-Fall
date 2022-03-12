@@ -9,7 +9,7 @@ public class RoadGenerator : MonoBehaviour
 
     private void Start()
     {        
-        GenerateChank();
+        GenerateChank();        
     }
 
     public void AddAccessibleChankType(IChank chankType)

@@ -8,7 +8,7 @@ using UnityEngine;
 [RequireComponent(typeof(MeshCollider))]
 public class RoadCreator : MonoBehaviour
 {
-    public float roadWidth = 1;
+    public float roadWidth = 3;
 
     [Range(.5f, 1.5f)]
     public float spacing = 1;

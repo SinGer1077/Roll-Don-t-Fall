@@ -17,6 +17,19 @@ public class PathChankCreator : MonoBehaviour, IChank
 
     private DifficultLevelController _levelController;
 
+    private List<Vector3> _possibleDirections = new List<Vector3>()
+    {
+        new Vector3(0, 0, 1),
+        new Vector3(1, 0, 1),
+        new Vector3(-1, 0, 1),
+        new Vector3(0, -1, 1),
+        new Vector3(1, -1, 1),
+        new Vector3(-1, -1, 1),
+        new Vector3(0, 1, 1),
+        new Vector3(1, 1, 1),
+        new Vector3(-1, 1, 1),
+    };
+
     public PathChankCreator()
     {
 
@@ -45,12 +58,12 @@ public class PathChankCreator : MonoBehaviour, IChank
         _endPoint = _pathCurve.path[_pathCurve.path.NumPoints - 1];
 
 
-        AddForwardSegment(9f);
-        for (int i = 0; i < 5; i++)
+        AddForwardSegment(29f);
+        for (int i = 0; i < (_levelController.CurrentDifficultLevel + 1) * 20; i++)
         {
             AddSegment();
         }
-        AddForwardSegment(15f);
+        AddForwardSegment(5f);
     }
 
     private void AddForwardSegment(float length)
@@ -73,14 +86,25 @@ public class PathChankCreator : MonoBehaviour, IChank
     }
 
     private Vector3 SetNextRandomPoint()
-    {      
-        Vector3 newPoint = new Vector3(
-            _endPoint.x + Random.Range(-5, 5),
-            _endPoint.y + Random.Range(-1, 1),
-            _endPoint.z + Random.Range(-5, 5)
-            );
+    {
+        //Vector3 newPoint = new Vector3(
+        //    _endPoint.x + Random.Range(-10, 10),
+        //    _endPoint.y + Random.Range(-3, 3),
+        //    _endPoint.z + Random.Range(2, 5)
+        //    );
+
+        
+        float z = _endPoint.z + GetRandomCoefWithLevelDifficult(5f);        
+        float x = GetRandomCoefWithLevelDifficult(5f) + GetRandomCoefWithLevelDifficult(5f) * Mathf.Sin(GetRandomCoefWithLevelDifficult(5f) * z + GetRandomCoefWithLevelDifficult(5f));     
+        float y = GetRandomCoefWithLevelDifficult(1f) + GetRandomCoefWithLevelDifficult(1f) * Mathf.Sin(GetRandomCoefWithLevelDifficult(1f) * z + GetRandomCoefWithLevelDifficult(1f));
+        Vector3 newPoint = new Vector3(x, y, z);
 
         return newPoint;
+    }
+
+    private float GetRandomCoefWithLevelDifficult(float coef)
+    {
+        return Random.Range(coef * _levelController.CurrentDifficultLevel, coef * (_levelController.CurrentDifficultLevel + 2));
     }
 
     public Vector3 GetEndPoint()
