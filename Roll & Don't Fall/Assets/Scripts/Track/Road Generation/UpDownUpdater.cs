@@ -44,18 +44,20 @@ public class UpDownUpdater : MonoBehaviour
         {
             transform.position = Vector3.Lerp(_downPosition, _upPosition, fractionOfJourney);
 
-            if (1.0f - fractionOfJourney < 0.1f)
+            if (1.0f - fractionOfJourney < 0.001f)
             {
                 _toTheUp = false;
+                _startTime = Time.time;
             }
         }
         else
         {
             transform.position = Vector3.Lerp(_upPosition, _downPosition, fractionOfJourney);
 
-            if (1.0f - fractionOfJourney < 0.1f)
+            if (1.0f - fractionOfJourney < 0.001f)
             {
                 _toTheUp = true;
+                _startTime = Time.time;
             }
         }
     }
