@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpDownChank : MonoBehaviour, IChank
+public class FrontBackChank : MonoBehaviour, IChank
 {
     private Vector3 _startPoint;
 
@@ -12,12 +12,12 @@ public class UpDownChank : MonoBehaviour, IChank
 
     private DifficultLevelController _levelController;
 
-    private Material _material;
-
     private RoadGenerator _roadGenerator;
 
 
     private float _blockLength = 5f;
+
+    private float _roadLength = 15f;
 
     public int GetDifficultLevel()
     {
@@ -52,13 +52,14 @@ public class UpDownChank : MonoBehaviour, IChank
 
     private void CreateBlock()
     {
-        GameObject platform = GameObject.CreatePrimitive(PrimitiveType.Cube);        
+        GameObject platform = GameObject.CreatePrimitive(PrimitiveType.Cube);
         platform.transform.localScale = new Vector3(6 - _levelController.CurrentDifficultLevel, 0.2f, _blockLength);
-        platform.transform.position = new Vector3(_endPoint.x, _endPoint.y, _endPoint.z + _blockLength/2);
+        platform.transform.position = new Vector3(_endPoint.x, _endPoint.y, _endPoint.z + _blockLength / 2);
         platform.transform.parent = transform;
 
-        platform.AddComponent<UpDownUpdater>();
+        FrontBackUpdater updater = platform.AddComponent<FrontBackUpdater>();
+        updater.SetRoadLength(_roadLength);
 
-        _endPoint = new Vector3(_endPoint.x, _endPoint.y, _endPoint.z + _blockLength + 2f);
+        _endPoint = new Vector3(_endPoint.x, _endPoint.y, _endPoint.z + _roadLength + _blockLength + 1f);
     }
 }
