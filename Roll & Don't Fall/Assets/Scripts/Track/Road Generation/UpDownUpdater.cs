@@ -15,7 +15,9 @@ public class UpDownUpdater : MonoBehaviour
 
     private float _distance;
 
-    private bool _toTheUp;
+    private int _movementDirection = 0; //0 - stop, 1 - up, 2 - down 
+
+    private float _randomSpeedForBlock;
 
     public void SetDifficultCount()
     {
@@ -23,31 +25,48 @@ public class UpDownUpdater : MonoBehaviour
         _difficultCount = controller.CurrentDifficultLevel;
     }
 
+    private void SetMoveDirection()
+    {
+        _startTime = Time.time;
+        switch (_movementDirection)
+        {
+            case 0:
+                _movementDirection = 1;
+                break;
+            case 1:
+                _movementDirection = 2;
+                break;
+            case 2:
+                _movementDirection = 1;
+                break;
+        }
+    }
+
     private void Start()
     {
         SetDifficultCount();
         _downPosition = new Vector3(transform.position.x, transform.position.y - (_difficultCount + 1), transform.position.z);
         _upPosition = new Vector3(transform.position.x, transform.position.y + (_difficultCount + 1), transform.position.z);
-
-        _startTime = Time.time;
+        
         _distance = Vector3.Distance(_downPosition, _upPosition);
+        _randomSpeedForBlock = Random.Range(1f, 3f);
 
-        _toTheUp = true;
+        float timeToStart = Random.Range(0.0f, 1.0f);
+        Invoke("SetMoveDirection", timeToStart);
     }
 
     private void Update()
-    {        
-        float distCovered = (Time.time - _startTime) * _difficultCount;
+    {
+        float distCovered = (Time.time - _startTime) * _difficultCount * _randomSpeedForBlock;
         float fractionOfJourney = distCovered / _distance;
 
-        if (_toTheUp == true)
+        if (_movementDirection == 1)
         {
             transform.position = Vector3.Lerp(_downPosition, _upPosition, fractionOfJourney);
 
             if (1.0f - fractionOfJourney < 0.001f)
             {
-                _toTheUp = false;
-                _startTime = Time.time;
+                SetMoveDirection();
             }
         }
         else
@@ -56,8 +75,7 @@ public class UpDownUpdater : MonoBehaviour
 
             if (1.0f - fractionOfJourney < 0.001f)
             {
-                _toTheUp = true;
-                _startTime = Time.time;
+                SetMoveDirection();
             }
         }
     }
