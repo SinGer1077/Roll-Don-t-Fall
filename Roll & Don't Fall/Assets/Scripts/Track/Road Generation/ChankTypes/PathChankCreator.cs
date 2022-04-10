@@ -46,6 +46,7 @@ public class PathChankCreator : MonoBehaviour, IChank
 
         _pathMesh = this.gameObject.AddComponent<RoadCreator>();
         _pathMesh.roadWidth = 6 - _levelController.CurrentDifficultLevel;
+
         GetComponent<MeshRenderer>().sharedMaterial = _levelController.LevelMaterials[_levelController.CurrentDifficultLevel - 1];       
 
         _pathCurve = _pathMesh.GetComponent<PathCreator>();
@@ -59,6 +60,8 @@ public class PathChankCreator : MonoBehaviour, IChank
             AddSegment();
         }
         AddForwardSegment(15f);
+
+        GetComponent<MeshCollider>().sharedMesh = GetComponent<MeshFilter>().mesh;
 
         _roadGenerator.UpdateLastPosition(_endPoint);
     }
