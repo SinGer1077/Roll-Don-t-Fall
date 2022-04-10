@@ -57,6 +57,8 @@ public class FrontBackChank : MonoBehaviour, IChank
         platform.transform.position = new Vector3(_endPoint.x, _endPoint.y, _endPoint.z + _blockLength / 2);
         platform.transform.parent = transform;
 
+        platform.GetComponent<MeshRenderer>().sharedMaterial = _levelController.LevelMaterials[_levelController.CurrentDifficultLevel - 1];
+
         FrontBackUpdater updater = platform.AddComponent<FrontBackUpdater>();
         updater.SetRoadLength(_roadLength);
 

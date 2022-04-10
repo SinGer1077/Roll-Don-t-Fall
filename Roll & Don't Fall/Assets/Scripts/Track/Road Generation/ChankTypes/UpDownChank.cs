@@ -57,6 +57,8 @@ public class UpDownChank : MonoBehaviour, IChank
         platform.transform.position = new Vector3(_endPoint.x, _endPoint.y, _endPoint.z + _blockLength/2);
         platform.transform.parent = transform;
 
+        platform.GetComponent<MeshRenderer>().sharedMaterial = _levelController.LevelMaterials[_levelController.CurrentDifficultLevel - 1];
+
         platform.AddComponent<UpDownUpdater>();
 
         _endPoint = new Vector3(_endPoint.x, _endPoint.y, _endPoint.z + _blockLength + 2f);
