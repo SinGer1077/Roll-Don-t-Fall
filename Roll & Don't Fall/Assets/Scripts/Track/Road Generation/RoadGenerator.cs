@@ -7,9 +7,14 @@ using UnityEngine;
 
 public class RoadGenerator : MonoBehaviour
 {
-    public List<IChank> _accessibleChankTypes = new List<IChank>();
+    [SerializeField]
+    private DifficultLevelController _levelController;
 
-    public Vector3 _lastPosition;
+    private List<IChank> _accessibleChankTypes = new List<IChank>();
+
+    private Vector3 _lastPosition;
+
+    public Vector3 LastPosition => _lastPosition;
 
     private void Awake()
     {
@@ -60,11 +65,15 @@ public class RoadGenerator : MonoBehaviour
         IChank component = goChank.GetComponent<IChank>();
         component.SetStartPoint(_lastPosition);
         component.Create();
+
+        _levelController.CheckIncreasingDifficultLevel(_lastPosition);
     }
 
     public void UpdateLastPosition(Vector3 newPos)
     {
         _lastPosition = newPos;
     }
+
+    
         
 }

@@ -155,10 +155,10 @@ MonoBehaviour:
   _roadGenerator: {fileID: 1993109089}
   _levelMaterials:
   - {fileID: 2100000, guid: 9689cda707afd0b49b8adfc5fcf04263, type: 2}
+  - {fileID: 2100000, guid: f6f104614072b3c4cae80f09fd6b7340, type: 2}
+  - {fileID: 2100000, guid: c0ca5206c7338df479378b736fe7fc0a, type: 2}
   - {fileID: 2100000, guid: f3c3c4e280b5a5841b5c9f98965e8f8c, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 060b7e86d1d78784a9670b6dcd7dec31, type: 2}
 --- !u!4 &235237075
 Transform:
   m_ObjectHideFlags: 0
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312f01cbb5740bd4f99e560607775ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lastPosition: {x: 0, y: 0, z: 0}
+  _levelController: {fileID: 235237074}
 --- !u!4 &1993109090
 Transform:
   m_ObjectHideFlags: 0

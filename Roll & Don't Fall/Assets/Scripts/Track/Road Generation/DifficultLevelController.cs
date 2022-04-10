@@ -31,6 +31,8 @@ public class DifficultLevelController : MonoBehaviour
     {
         _currentDifficultLevel++;
         AddAccessChankTypeToRoadGenerator(_currentDifficultLevel);
+
+        Debug.Log(_currentDifficultLevel);
     }
 
     private void AddAccessChankTypeToRoadGenerator(int difficultLevel)
@@ -38,7 +40,7 @@ public class DifficultLevelController : MonoBehaviour
         foreach (Type chank in _chankTypes)
         {
             IChank type = (IChank)Activator.CreateInstance(chank);
-            if (type.GetDifficultLevel() == difficultLevel)
+            if (type.GetDifficultLevel() <= difficultLevel)
             {
                 _roadGenerator.AddAccessibleChankType(type);
             }
@@ -51,5 +53,15 @@ public class DifficultLevelController : MonoBehaviour
         var ourType = typeof(IChank);
         var types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(s => s.GetTypes()).Where(p => ourType.IsAssignableFrom(p) && !p.IsInterface).ToArray();        
         return types;
+    }
+
+    public void CheckIncreasingDifficultLevel(Vector3 lastPosition)
+    {
+        float distance = Vector3.Distance(Vector3.zero, lastPosition);
+
+        if (distance % 500 > _currentDifficultLevel && _currentDifficultLevel != _levelMaterials.Length)
+        {
+            IncreaseDifficultLevel();            
+        }
     }
 }
