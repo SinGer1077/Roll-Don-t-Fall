@@ -159,6 +159,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c0ca5206c7338df479378b736fe7fc0a, type: 2}
   - {fileID: 2100000, guid: f3c3c4e280b5a5841b5c9f98965e8f8c, type: 2}
   - {fileID: 2100000, guid: 060b7e86d1d78784a9670b6dcd7dec31, type: 2}
+  _distanceToChangeLevel: 100
 --- !u!4 &235237075
 Transform:
   m_ObjectHideFlags: 0
@@ -379,6 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelController: {fileID: 235237074}
+  _startBlockCount: 5
 --- !u!4 &1993109090
 Transform:
   m_ObjectHideFlags: 0
