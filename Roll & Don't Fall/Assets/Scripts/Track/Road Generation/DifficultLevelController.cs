@@ -12,6 +12,9 @@ public class DifficultLevelController : MonoBehaviour
     [SerializeField]
     private Material[] _levelMaterials;
 
+    [SerializeField]
+    private float _distanceToChangeLevel;
+
     public Material[] LevelMaterials => _levelMaterials;
 
     private int _currentDifficultLevel = 0;
@@ -59,7 +62,7 @@ public class DifficultLevelController : MonoBehaviour
     {
         float distance = Vector3.Distance(Vector3.zero, lastPosition);
 
-        if (distance % 500 > _currentDifficultLevel && _currentDifficultLevel != _levelMaterials.Length)
+        if (distance % _distanceToChangeLevel > _currentDifficultLevel && _currentDifficultLevel != _levelMaterials.Length)
         {
             IncreaseDifficultLevel();            
         }

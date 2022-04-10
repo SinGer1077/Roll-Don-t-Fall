@@ -10,6 +10,9 @@ public class RoadGenerator : MonoBehaviour
     [SerializeField]
     private DifficultLevelController _levelController;
 
+    [SerializeField]
+    private int _startBlockCount;
+
     private List<IChank> _accessibleChankTypes = new List<IChank>();
 
     private Vector3 _lastPosition;
@@ -25,7 +28,7 @@ public class RoadGenerator : MonoBehaviour
     {
         GeneratePathChankCreator();
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < _startBlockCount; i++)
         {
             GenerateRandomChank();
         }
